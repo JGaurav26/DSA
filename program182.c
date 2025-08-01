@@ -1,5 +1,6 @@
 #include<stdio.h>
 #include<stdlib.h>
+<<<<<<< HEAD:Application_Programs/program182.c
 //structure declaration
 struct node
 {
@@ -8,12 +9,22 @@ struct node
     struct node *next;
     struct node *previous; //#
 
+=======
+
+
+struct node
+{
+    int data;
+    struct node *next;
+    struct node *previous; // #
+>>>>>>> bd130305ac6f0bc676494729ce2ec96fb12aacf8:Application Programs/program182.c
 };
 
 typedef struct node NODE;
 typedef struct node * PNODE;
 typedef struct node ** PPNODE;
 
+<<<<<<< HEAD:Application_Programs/program182.c
 void InsertFirst(PPNODE Head, int iNo){
     PNODE newn = NULL;
     newn = (PNODE)malloc(sizeof(NODE));
@@ -58,11 +69,78 @@ int count (PNODE Head){
     while(Head!=NULL)
     {
         Head = Head->next;
+=======
+void InsertFirst(PPNODE Head, int iNo)
+{
+    PNODE newn = NULL;
+    newn = (PNODE)malloc(sizeof(NODE));
+
+    newn -> data = iNo;
+    newn -> next = NULL;
+    newn -> previous = NULL; // #
+
+    if(*Head == NULL)
+    {
+        *Head = newn; // LL is empty
+    }
+    else{
+        // LL is not empty
+        (*Head) -> previous = newn; // #
+        newn -> next = *Head;
+        *Head = newn;
+    }
+}
+
+void InsertLast(PPNODE Head, int iNo)
+{
+    
+}
+
+void InsertAtLoc(PPNODE Head, int iNo, int iLoc)
+{
+    
+}
+
+void DeleteFirst(PPNODE Head)
+{
+
+}
+
+void DeleteLast(PPNODE Head)
+{
+    
+}
+
+void DeleteAtLoc(PPNODE Head, int iLoc)
+{
+    
+}
+
+void display(PNODE Head)
+{
+    printf("Elements of the linked list are:\n");
+    printf("NULL <=> ");
+    while(Head != NULL)
+    {
+        printf("| %d | <=> ", Head->data);
+        Head = Head->next;
+    }
+    printf("NULL \n");
+}
+
+int count(PNODE Head)
+{
+    int iCnt = 0;
+    while(Head != NULL)
+    {
+        Head = Head -> next;
+>>>>>>> bd130305ac6f0bc676494729ce2ec96fb12aacf8:Application Programs/program182.c
         iCnt++;
     }
     return iCnt;
 }
 
+<<<<<<< HEAD:Application_Programs/program182.c
 
 int main()
 {
@@ -72,5 +150,17 @@ int main()
     display(First);
     int iRet = count(First);
     printf("LL has %d nodes in it \n",iRet);
+=======
+int main()
+{
+    PNODE First = NULL;
+
+    InsertFirst(&First, 60);
+    InsertFirst(&First, 50);
+    display(First);
+
+    int iRet = count(First);
+    printf("Elements of the linked list are: %d \n",iRet);
+>>>>>>> bd130305ac6f0bc676494729ce2ec96fb12aacf8:Application Programs/program182.c
     return 0;
 }
